@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 
 namespace BlazorSozluk.Infrastructure.Persistence.Context
 {
-    public class BlazorSozlukContext:DbContext
+    public class BlazorSozlukContext : DbContext
     {
         public const string DEFAULT_SCHEMA = "dbo";
 
-        public BlazorSozlukContext(DbContextOptions options):base(options)
+        public BlazorSozlukContext()
         {
-            
+
+        }
+        public BlazorSozlukContext(DbContextOptions options) : base(options)
+        {
+
         }
 
         public DbSet<User> Users { get; set; }
@@ -27,7 +31,17 @@ namespace BlazorSozluk.Infrastructure.Persistence.Context
         public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
         public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connStr = "Data Source=DESKTOP-CED7FJ6;Initial Catalog=BlazorSozluk;User ID=hamza;Password=12345";
+                optionsBuilder.UseSqlServer(connStr, opt =>
+                {
+                    opt.EnableRetryOnFailure();
+                });
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // şuan çalıştığımız assembly de Ientity den türeyen classları otomatik olarak ekler
@@ -64,8 +78,8 @@ namespace BlazorSozluk.Infrastructure.Persistence.Context
         {
             foreach (var entity in entities)
             {
-                if(entity.CreateDate==DateTime.MinValue)
-                entity.CreateDate = DateTime.Now;
+                if (entity.CreateDate == DateTime.MinValue)
+                    entity.CreateDate = DateTime.Now;
             }
         }
 
