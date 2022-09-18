@@ -1,6 +1,16 @@
 using BlazorSozluk.Infrastructure.Persistence.Extensions;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(opt =>
+    {
+        opt.JsonSerializerOptions.PropertyNamingPolicy = null;
+    })
+    .AddFluentValidation();
+
 
 // Add services to the container.
 
