@@ -1,3 +1,4 @@
+using BlazorSozluk.Api.Application.Extensions;
 using BlazorSozluk.Infrastructure.Persistence.Extensions;
 using FluentValidation.AspNetCore;
 
@@ -11,7 +12,6 @@ builder.Services
     })
     .AddFluentValidation();
 
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -19,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddApplicationRegistration();
 builder.Services.AddInfrastructureRegistration(builder.Configuration);
 
 var app = builder.Build();
