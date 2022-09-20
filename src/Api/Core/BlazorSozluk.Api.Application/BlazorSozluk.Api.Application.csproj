@@ -23,6 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Commands\Entry\CreateFav\" />
+    <Folder Include="Features\Commands\Entry\CreateVote\" />
+    <Folder Include="Features\Commands\Entry\Create\" />
+    <Folder Include="Features\Commands\Entry\DeleteFav\" />
+    <Folder Include="Features\Commands\Entry\DeleteVote\" />
     <Folder Include="Features\Queries\" />
   </ItemGroup>
 

@@ -10,13 +10,20 @@ using System.Threading.Tasks;
 
 namespace BlazorSozluk.Api.Application.Mapping
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
             CreateMap<User, LoginUserViewModel>().ReverseMap();
             CreateMap<CreateUserCommand, User>();
+
+            CreateMap<User, UpdateUserCommand>()
+                .ReverseMap();
+            CreateMap<CreateEntryCommand, Entry>()
+                .ReverseMap();
+            CreateMap<CreateEntryCommentCommand, EntryComment>()
+                .ReverseMap();
         }
-        
     }
+
 }
