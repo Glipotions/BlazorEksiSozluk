@@ -7,12 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces\Repositories\EntryCommentVoteRepository.cs" />
+    <Compile Remove="Interfaces\Repositories\EntryFavoriteRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation" Version="11.2.2" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
@@ -20,15 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlazorSozluk.Api.Domain\BlazorSozluk.Api.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Commands\Entry\CreateFav\" />
-    <Folder Include="Features\Commands\Entry\CreateVote\" />
-    <Folder Include="Features\Commands\Entry\Create\" />
-    <Folder Include="Features\Commands\Entry\DeleteFav\" />
-    <Folder Include="Features\Commands\Entry\DeleteVote\" />
-    <Folder Include="Features\Queries\" />
   </ItemGroup>
 
 </Project>

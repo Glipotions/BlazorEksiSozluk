@@ -4,6 +4,9 @@ using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddInfrastructureRegistration(builder.Configuration);
+builder.Services.AddApplicationRegistration();
+
 builder.Services
     .AddControllers()
     .AddJsonOptions(opt =>
@@ -19,8 +22,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplicationRegistration();
-builder.Services.AddInfrastructureRegistration(builder.Configuration);
+
 
 var app = builder.Build();
 
