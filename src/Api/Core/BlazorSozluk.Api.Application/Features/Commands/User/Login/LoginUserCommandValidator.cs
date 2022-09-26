@@ -7,10 +7,10 @@ namespace BlazorSozluk.Api.Application.Features.Commands.User.Login
     {
         public LoginUserCommandValidator()
         {
-            RuleFor(x => x.EmailAddress)
-                .NotNull()
-                .EmailAddress(FluentValidation.Validators.EmailValidationMode.AspNetCoreCompatible)
-                .WithMessage("{PropertyName} not a valid email address");
+            //RuleFor(x => x.EmailAddress)
+            //    .NotNull()
+            //    .EmailAddress(FluentValidation.Validators.EmailValidationMode.AspNetCoreCompatible)
+            //    .WithMessage("{PropertyName} not a valid email address");
 
             RuleFor(x => x.Password)
                 .NotNull()

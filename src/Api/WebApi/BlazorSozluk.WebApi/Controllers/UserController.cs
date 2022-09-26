@@ -3,6 +3,7 @@ using BlazorSozluk.Api.Application.Features.Queries.GetMainPageEntries;
 using BlazorSozluk.Common.Events.User;
 using BlazorSozluk.Common.Models.RequestModels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorSozluk.WebApi.Controllers
@@ -26,7 +27,7 @@ namespace BlazorSozluk.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("UserName/{userName}")]
+        [Route("Username/{userName}")]
         public async Task<IActionResult> GetByUserName(string userName)
         {
             var user = await _mediator.Send(new GetUserDetailQuery(Guid.Empty, userName));
@@ -40,6 +41,7 @@ namespace BlazorSozluk.WebApi.Controllers
             return Ok(res);
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromBody] CreateUserCommand command)
         {
             var guid = await _mediator.Send(command);
@@ -47,6 +49,7 @@ namespace BlazorSozluk.WebApi.Controllers
         }
         [HttpPost]
         [Route("Update")]
+        [Authorize]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             var guid = await _mediator.Send(command);
@@ -63,6 +66,7 @@ namespace BlazorSozluk.WebApi.Controllers
 
         [HttpPost]
         [Route("ChangePassword")]
+        [Authorize]
         public async Task<IActionResult> ChangePassword([FromBody] ChangeUserPasswordCommand command)
         {
             if (!command.UserId.HasValue)
