@@ -1,5 +1,4 @@
-﻿using BlazorSozluk.Common.ViewModels;
-using BlazorSozluk.WebApp.Infrastructure.Services.Interfaces;
+﻿using BlazorSozluk.WebApp.Infrastructure.Services.Interfaces;
 
 namespace BlazorSozluk.WebApp.Infrastructure.Services
 {

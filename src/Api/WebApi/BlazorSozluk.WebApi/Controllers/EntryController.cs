@@ -7,7 +7,6 @@ using BlazorSozluk.Common.Models.RequestModels;
 using BlazorSozluk.WebApi.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorSozluk.Api.WebApi.Controllers;

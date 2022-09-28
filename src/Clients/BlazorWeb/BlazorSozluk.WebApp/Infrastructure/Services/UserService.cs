@@ -2,7 +2,6 @@
 using BlazorSozluk.Common.Infrastructure.Exceptions;
 using BlazorSozluk.Common.Infrastructure.Results;
 using BlazorSozluk.Common.Models.Queries;
-using BlazorSozluk.Common.ViewModels;
 using BlazorSozluk.WebApp.Infrastructure.Services.Interfaces;
 using System.Net.Http.Json;
 using System.Text.Json;

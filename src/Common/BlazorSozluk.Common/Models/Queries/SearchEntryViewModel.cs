@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace BlazorSozluk.Common.Models.Queries
+﻿namespace BlazorSozluk.Common.Models.Queries
 {
     public class SearchEntryViewModel
     {

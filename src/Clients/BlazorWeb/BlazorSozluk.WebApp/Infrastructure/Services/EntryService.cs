@@ -1,7 +1,6 @@
 ﻿using BlazorSozluk.Common.Models.Page;
 using BlazorSozluk.Common.Models.Queries;
 using BlazorSozluk.Common.Models.RequestModels;
-using BlazorSozluk.Common.ViewModels;
 using BlazorSozluk.WebApp.Infrastructure.Services.Interfaces;
 using System.Net.Http.Json;
 
