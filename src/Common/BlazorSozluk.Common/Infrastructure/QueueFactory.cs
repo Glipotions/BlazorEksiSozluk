@@ -47,5 +47,44 @@ namespace BlazorSozluk.Common.Infrastructure
 
             return consumer;
         }
+
+        /// <summary>
+        /// 
+        /// Received eventini dinliyor
+        /// bir mesaj geldiğinde okuyup deserialize ediyor
+        /// buraya gönderilen action a parametre gönderiyor
+        /// bu modelle işi bitince ack ederek rabbitMq dan siliyor.
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="consumer"></param>
+        /// <param name="act"></param>
+        /// <returns></returns>
+        public static EventingBasicConsumer Receive<T>(this EventingBasicConsumer consumer, Action<T> act)
+        {
+            consumer.Received += (m, eventArgs) =>
+            {
+                var body = eventArgs.Body.ToArray();
+                var message = Encoding.UTF8.GetString(body);
+
+                var model = JsonSerializer.Deserialize<T>(message);
+
+                act(model);
+
+                consumer.Model.BasicAck(eventArgs.DeliveryTag, false);
+            };
+
+            return consumer;
+        }
+
+        public static EventingBasicConsumer StartConsuming(this EventingBasicConsumer consumer, string queueName)
+        {
+            consumer.Model.BasicConsume(queue: queueName,
+                                        autoAck: false,
+                                        consumer: consumer);
+
+            return consumer;
+        }
+
     }
 }
