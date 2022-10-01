@@ -2,7 +2,11 @@
 {
     public class ProjectConstants
     {
+#if DEBUG
         public const string RabbitMqHost = "localhost";
+#else
+        public const string RabbitMqHost = "c_rabbitmq";
+#endif
         public const string DefaultExchangeType = "direct";
 
         public const string UserExchangeName = "UserExchange";
